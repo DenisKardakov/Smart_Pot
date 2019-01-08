@@ -1,4 +1,3 @@
-#include <SPI.h>
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 #define SLEEP_LENGTH 100 // время сна платы в секунадх
@@ -27,8 +26,9 @@ void myTimerEvent() // эта функция получает данные с п
   }
   Blynk.virtualWrite(V5, sensorData); // отправка аналоговых данных в Bkynk
   Blynk.virtualWrite(V6, output_value); // отправка уровня влажности почвы в процентах в Blynk
-  delay(2000); // заержка перед уходом в глубокий сон
+  delay(2000); // задержка перед уходом в глубокий сон
   ESP.deepSleep(SLEEP_LENGTH * 1000000); //уход платы в глубокий сон
+}
 
 void setup()
 {
@@ -43,4 +43,3 @@ void loop()
  timer.run(); // запуск таймера
 
 }
-
